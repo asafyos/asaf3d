@@ -4,6 +4,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "asaf3d": {
+      "i18n": {
+        "sourceLocale": "he-IL",
+        "locales": {
+          "en-US": "src/locale/i18n.en.json"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +23,9 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "localize": [
+              "he-IL"
+            ],
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js",
