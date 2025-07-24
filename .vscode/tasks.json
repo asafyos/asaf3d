@@ -37,6 +37,20 @@
           }
         }
       }
+    },
+    {
+      "type": "npm",
+      "script": "generate:page --page_name=${input:page_name}",
+      "problemMatcher": [],
+      "label": "npm: generate:page",
+      "detail": "ng g c pages/%npm_config_page_name% && ng g m pages/%npm_config_page_name%"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "page_name",
+      "description": "a page name",
+      "type": "promptString"
     }
   ]
 }
