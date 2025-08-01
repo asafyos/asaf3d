@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start:open": "ng serve -o",
     "start:mock": "ng serve --configuration mockup",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "generate:page": "ng g c pages/%npm_config_page_name% && ng g m pages/%npm_config_page_name%",
+    "generate:page": "ng g m pages/%npm_config_page_name% && ng g c pages/%npm_config_page_name% --type page",
+    "generate:page:components": "ng g c pages/%npm_config_page_name%/%npm_config_component_name% --prefix %npm_config_page_name%",
+    "generate:global": "ng g c global/%npm_config_component_name%",
     "test": "ng test",
     "translate": "ng extract-i18n --out-file i18n.he.xlf --output-path src/locale"
   },

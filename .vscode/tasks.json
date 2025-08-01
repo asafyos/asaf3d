@@ -44,12 +44,31 @@
       "problemMatcher": [],
       "label": "npm: generate:page",
       "detail": "ng g c pages/%npm_config_page_name% && ng g m pages/%npm_config_page_name%"
+    },
+    {
+      "type": "npm",
+      "script": "generate:global --component_name=${input:component_name}",
+      "problemMatcher": [],
+      "label": "npm: generate:global",
+      "detail": "ng g c global/%npm_config_component_name% --export true"
+    },
+    {
+      "type": "npm",
+      "script": "generate:page:components --page_name=${input:page_name} --component_name=${input:component_name}",
+      "problemMatcher": [],
+      "label": "npm: generate:page:components",
+      "detail": "ng g c pages/%npm_config_page_name%/%npm_config_component_name% --prefix %npm_config_page_name%"
     }
   ],
   "inputs": [
     {
+      "id": "component_name",
+      "description": "component name",
+      "type": "promptString"
+    },
+    {
       "id": "page_name",
-      "description": "a page name",
+      "description": "page name",
       "type": "promptString"
     }
   ]
