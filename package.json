@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:mock": "ng serve --configuration mockup",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "generate:page": "ng g c pages/%npm_config_page_name% && ng g m pages/%npm_config_page_name%",
