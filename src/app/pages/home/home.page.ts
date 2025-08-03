@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { LocalDb } from '../../core/services/local-db';
 
 @Component({
   selector: 'app-home',
@@ -9,4 +11,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class HomePage {
 
+  constructor(private _localDb: LocalDb) {
+    console.log(environment.mock)
+    _localDb.getCategories().then((categories) => {
+      console.table(categories);
+    })
+  }
 }
