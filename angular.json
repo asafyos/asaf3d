@@ -17,6 +17,9 @@
           "changeDetection": "OnPush",
           "skipTests": true,
           "standalone": false
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
