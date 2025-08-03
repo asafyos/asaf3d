@@ -1,5 +1,3 @@
-// https://dbdiagram.io/d/Asaf3D-687dde18f413ba3508d0367e
-
 export type category = {
     id: number,
     name: string,
@@ -10,16 +8,20 @@ export type model = {
     name: string,
     imageUrl: string,
     modelUrl: string,
-    printTime: number, // minutes
+    printTime: number,
     invisible: boolean,
-    categories: category[],
-    parts: modelPart[]
+}
+
+export type modelCategories = {
+    model: number, // model.id
+    category: number, // category.id
 }
 
 export type modelPart = {
     id: number,
+    model: number, //model.id
     name: string,
-    weight: number, // grams
+    weight: number,
 }
 
 export type color = {
@@ -41,7 +43,7 @@ export type user = {
     id: number,
     username: string,
     password?: string,
-    role: role,
+    role: number, // role.id
     name: string,
     phone: string,
 }
@@ -53,28 +55,28 @@ export type status = {
 
 export type order = {
     id: number,
-    user: user,
-    status: status,
+    user: number, // user.id
+    status: number, // status.id
     name?: string,
     phone?: number,
     finalPrice: number,
-    items: orderItem[],
 }
 
 export type orderItem = {
     item: number,
-    model: model,
+    order: number, // order.id
+    model: number, // model.id
     quantity: number,
     notes: string,
     custom: boolean,
     link?: string,
     finalPrice: number,
-    colors: orderItemColor[],
 }
 
 export type orderItemColor = {
     id: number,
-    part: modelPart,
-    color: color,
+    item: number, // orderItem.item
+    part: number, //modelPart.id
+    color: number, // color.id
     notes?: string,
 }
