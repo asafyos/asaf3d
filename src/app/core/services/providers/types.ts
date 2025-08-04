@@ -1,80 +1,80 @@
 // https://dbdiagram.io/d/Asaf3D-687dde18f413ba3508d0367e
 
-export type category = {
+export type Category = {
     id: number,
     name: string,
 }
 
-export type model = {
+export type Model = {
     id: number,
     name: string,
     imageUrl: string,
     modelUrl: string,
     printTime: number, // minutes
     invisible: boolean,
-    categories: category[],
-    parts: modelPart[]
+    categories: Category[],
+    parts: ModelPart[]
 }
 
-export type modelPart = {
+export type ModelPart = {
     id: number,
     name: string,
     weight: number, // grams
 }
 
-export type color = {
+export type Color = {
     id: number,
     name: string,
     imageUrl: string,
     kgPrice: number,
     outOfStock: boolean,
     colorTag: string,
-    colorTag2: string    
+    colorTag2: string
 }
 
-export type role = {
+export type Role = {
     id: number,
     name: string,
 }
 
-export type user = {
+export type User = {
     id: number,
     username: string,
     password?: string,
-    role: role,
+    role: Role,
     name: string,
     phone: string,
 }
 
-export type status = {
+export type Status = {
     id: number,
     name: string,
 }
 
-export type order = {
+export type Order = {
     id: number,
-    user: user,
-    status: status,
+    user: User,
+    status: Status,
     name?: string,
     phone?: number,
     finalPrice: number,
-    items: orderItem[],
+    items: OrderItem[],
 }
 
-export type orderItem = {
+export type OrderItem = {
     item: number,
-    model: model,
+    model: Model,
     quantity: number,
     notes: string,
     custom: boolean,
     link?: string,
     finalPrice: number,
-    colors: orderItemColor[],
+    colors: OrderItemColor[],
 }
 
-export type orderItemColor = {
+export type OrderItemColor = {
     id: number,
-    part: modelPart,
-    color: color,
+    part: ModelPart,
+    color: Color,
     notes?: string,
 }

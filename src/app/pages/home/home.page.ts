@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { LocalDb } from '../../core/services/local-db';
+import { ReplaySubject } from 'rxjs';
+import { Mockup as LocalDb } from '../../core/services/providers/mock/mockup';
+import { Model } from '../../core/services/providers/types';
 
 @Component({
   selector: 'app-home',
@@ -11,10 +12,13 @@ import { LocalDb } from '../../core/services/local-db';
 })
 export class HomePage {
 
+  topSellModels: ReplaySubject<Model[]> = new ReplaySubject(1);
+  model1: ReplaySubject<Model> = new ReplaySubject(1);
+
   constructor(private _localDb: LocalDb) {
-    console.log(environment.mock)
-    _localDb.getCategories().then((categories) => {
-      console.table(categories);
+    _localDb.getModels().then((_models) => {
+      this.topSellModels.next(_models)
+      this.model1.next(_models[0] || null);
     })
   }
 }

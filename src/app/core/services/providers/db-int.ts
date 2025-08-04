@@ -1,9 +1,9 @@
-import { category, color, model } from "./types";
+import { Category, Color, Model } from "./types";
 
 export interface dbInt {
 
-    getCategories(): Promise<category[]>;
-    getColors(): Promise<color[]>;
+    getCategories(): Promise<Category[]>;
+    getColors(): Promise<Color[]>;
 
-    getModels(category?: number): Promise<model[]>;
+    getModels(category?: number): Promise<Model[]>;
 }

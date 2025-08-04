@@ -1,6 +1,6 @@
-import { color } from "../../types";
+import { Color } from "../../types";
 
-export const colors: color[] = [
+export const colors: Color[] = [
     {
         id: 1,
         name: "שחור",

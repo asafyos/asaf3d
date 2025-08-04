@@ -1,7 +1,7 @@
-import { model } from "../../types";
+import { Model } from "../../types";
 import { categories } from "./categories";
 
-export const models: model[] = [
+export const models: Model[] = [
     {
         id: 1,
         name: "ארנב סרוג",
@@ -42,7 +42,7 @@ export const models: model[] = [
             id: 3,
             name: "פנימי",
             weight: 10
-        },{
+        }, {
             id: 4,
             name: "חיצוני",
             weight: 8

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ServicesModule } from '../../core/services/services-module';
+import { GlobalModule } from '../../global/global.module';
 import { HomePage } from './home.page';
-
 
 
 @NgModule({
@@ -12,6 +12,7 @@ import { HomePage } from './home.page';
   imports: [
     CommonModule,
     ServicesModule,
+    GlobalModule,
   ],
 })
 export class HomeModule { }

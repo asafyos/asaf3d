@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { dbInt } from "../db-int";
-import { category, color, model } from '../types';
+import { Category, Color, Model } from '../types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Mockup implements dbInt {
-  getCategories(): Promise<category[]> {
+  getCategories(): Promise<Category[]> {
     return new Promise(async (resolve, reject) => {
       const data = await import("./mock-data/categories")
       resolve(data.categories);
     });
   }
-  getColors(): Promise<color[]> {
+  getColors(): Promise<Color[]> {
     return new Promise(async (resolve, reject) => {
       const data = await import("./mock-data/colors")
       resolve(data.colors);
     });
   }
-  getModels(category?: number): Promise<model[]> {
+  getModels(category?: number): Promise<Model[]> {
     return new Promise(async (resolve, reject) => {
       const data = await import("./mock-data/models")
 
