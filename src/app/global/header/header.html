@@ -1,6 +1,6 @@
 <div class="header">
   <div>
-    <button matIconButton>
+    <button matIconButton (click)="openMenu($event)">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
@@ -9,7 +9,7 @@
   </div>
   <div>
     <button matIconButton>
-      <mat-icon>account_circle</mat-icon>
+      <mat-icon routerLink="/account">account_circle</mat-icon>
     </button>
   </div>
 </div>

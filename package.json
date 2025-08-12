@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "start": "ng serve",
     "start:open": "ng serve -o",
     "start:mock": "ng serve --configuration mockup",
     "build": "ng build",

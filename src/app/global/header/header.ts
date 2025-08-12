@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,4 +9,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class Header {
 
+  @Output()
+  openSidenav: EventEmitter<void> = new EventEmitter();
+
+  openMenu(event: Event) {
+    this.openSidenav.next();
+
+  }
 }
