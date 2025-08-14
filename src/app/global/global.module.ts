@@ -5,12 +5,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { Header } from './header/header';
-import { ModelCard } from './model-card/model-card';
 import { SideMenu } from './side-menu/side-menu';
 
 @NgModule({
   declarations: [
-    ModelCard,
     Header,
     SideMenu,
   ],
@@ -22,7 +20,6 @@ import { SideMenu } from './side-menu/side-menu';
     RouterLink
   ],
   exports: [
-    ModelCard,
     Header,
     SideMenu,
   ]

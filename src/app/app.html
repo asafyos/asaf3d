@@ -5,7 +5,9 @@
       <app-side-menu (closeNav)="sidenav.close()"></app-side-menu>
     </mat-sidenav>
     <mat-sidenav-content>
-      <router-outlet />
+      <div class="app-content">
+        <router-outlet />
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
