@@ -1,6 +1,7 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { LocalDbService } from './core/local-db/local-db-service';
@@ -14,6 +15,14 @@ export const appConfig: ApplicationConfig = {
     {
       provide: LocalDbService,
       useClass: environment.mock ? MockupService : LocalDbService,
-    }
+    },
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: "he-IL",
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: "he-IL",
+    },
   ]
 };
