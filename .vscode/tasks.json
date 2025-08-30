@@ -40,24 +40,31 @@
     },
     {
       "type": "npm",
+      "script": "generate:page-component --page_name=${input:page_name} --component_name=${input:component_name}",
+      "problemMatcher": [],
+      "label": "npm: generate:page-component",
+      "detail": "ng g c pages/%npm_config_page_name%/components/%npm_config_component_name% --prefix %npm_config_page_name%"
+    },
+    {
+      "type": "npm",
       "script": "generate:page --page_name=${input:page_name}",
       "problemMatcher": [],
       "label": "npm: generate:page",
-      "detail": "ng g c pages/%npm_config_page_name% && ng g m pages/%npm_config_page_name%"
+      "detail": "ng g m --routing pages/%npm_config_page_name% && ng g c pages/%npm_config_page_name% --type page"
     },
     {
       "type": "npm",
-      "script": "generate:global --component_name=${input:component_name}",
+      "script": "generate:page-popup --page_name=${input:page_name} --component_name=${input:component_name}",
       "problemMatcher": [],
-      "label": "npm: generate:global",
-      "detail": "ng g c global/%npm_config_component_name% --export true"
+      "label": "npm: generate:page-popup",
+      "detail": "ng g c pages/%npm_config_page_name%/popups/%npm_config_component_name% --prefix %npm_config_page_name% --type popup"
     },
     {
       "type": "npm",
-      "script": "generate:page:components --page_name=${input:page_name} --component_name=${input:component_name}",
+      "script": "generate:shared-component --component_name=${input:component_name}",
       "problemMatcher": [],
-      "label": "npm: generate:page:components",
-      "detail": "ng g c pages/%npm_config_page_name%/%npm_config_component_name% --prefix %npm_config_page_name%"
+      "label": "npm: generate:shared-component",
+      "detail": "ng g c common/%npm_config_component_name% --prefix shared"
     }
   ],
   "inputs": [

@@ -12,11 +12,20 @@
       },
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
         "@schematics/angular:component": {
           "style": "scss",
           "changeDetection": "OnPush",
           "skipTests": true,
           "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
         },
         "@schematics/angular:service": {
           "skipTests": true

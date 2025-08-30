@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { MatSidenav, MatSidenavContainer, MatSidenavContent } from "@angular/material/sidenav";
 import { RouterOutlet } from '@angular/router';
-import { GlobalModule } from './global/global.module';
+import { GlobalModule } from './global/global-module';
 
 @Component({
   selector: 'app-root',
+  // standalone: false,
   imports: [
     RouterOutlet,
     GlobalModule,

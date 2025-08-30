@@ -1,24 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServicesModule } from './core/services/services-module';
-import { GlobalModule } from './global/global.module';
-import { HomeModule } from './pages/home/home-module';
+import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
+import { RouterOutlet } from '@angular/router';
+import { App } from './app';
+import { CoreModule } from './core/core-module';
+import { GlobalModule } from './global/global-module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [App],
   imports: [
     CommonModule,
+    RouterOutlet,
     GlobalModule,
-    HomeModule,
-    ServicesModule.forRoot(),
-    BrowserAnimationsModule,
+    MatSidenav,
+    MatSidenavContainer,
+    MatSidenavContent,
+    CoreModule.forRoot(),
   ],
-  providers: [
-    GlobalModule,
-    HomeModule,
-  ],
+  bootstrap: [App]
 })
 export class AppModule { }

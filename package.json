@@ -8,9 +8,10 @@
     "start:mock": "ng serve --configuration mockup",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "generate:page": "ng g m pages/%npm_config_page_name% && ng g c pages/%npm_config_page_name% --type page",
-    "generate:page:components": "ng g c pages/%npm_config_page_name%/%npm_config_component_name% --prefix %npm_config_page_name%",
-    "generate:global": "ng g c global/%npm_config_component_name%",
+    "generate:page": "ng g m --routing pages/%npm_config_page_name% && ng g c pages/%npm_config_page_name% --type page",
+    "generate:page-component": "ng g c pages/%npm_config_page_name%/components/%npm_config_component_name% --prefix %npm_config_page_name%",
+    "generate:page-popup": "ng g c pages/%npm_config_page_name%/popups/%npm_config_component_name% --prefix %npm_config_page_name% --type popup",
+    "generate:shared-component": "ng g c common/%npm_config_component_name% --prefix shared",
     "test": "ng test",
     "translate": "ng extract-i18n --out-file i18n.he.xlf --output-path src/locale"
   },

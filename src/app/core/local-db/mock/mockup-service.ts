@@ -5,7 +5,7 @@ import { Category, Color, Model } from '../types';
 @Injectable({
   providedIn: 'root'
 })
-export class Mockup implements dbInt {
+export class MockupService implements dbInt {
   getCategories(): Promise<Category[]> {
     return new Promise(async (resolve, reject) => {
       const data = await import("./mock-data/categories")
