@@ -1,3 +1,5 @@
+@import url('../../../style/mixin.scss');
+
 .model-page {
     &-title {}
 
@@ -103,9 +105,11 @@
     gap: 0.5rem;
 
     &-exmp {
+        // @include color-mark;
         width: 1em;
         height: 1em;
         border-radius: 0.5rem;
+        background: linear-gradient(to bottom right, var(--color-tag1) 0%, var(--color-tag1) 50%, var(--color-tag2) 51%, var(--color-tag2) 100%);
         align-self: center;
     }
 }

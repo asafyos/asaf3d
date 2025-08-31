@@ -14,7 +14,8 @@
       </div>
     </div>
     <div class="model-page-content-shopping">
-      <h3>צבעים למודל</h3>
+      <h3>הזמנת פריט</h3>
+      <h4>צבעים למודל</h4>
       <div class="model-page-content-shopping-model-parts">
         @for (part of _model.parts; track $index) {
         <!-- <h4 class="model-page-content-shopping-model-parts-part-name">
@@ -33,11 +34,8 @@
               <div class="color-option">
                 <div
                   class="color-option-exmp"
-                  style="background: linear-gradient(to bottom right, {{
-                    part.selectedColor.colorTag
-                  }} 0%,{{ part.selectedColor.colorTag }} 50%,{{
-                    part.selectedColor.colorTag2
-                  }} 51%,{{ part.selectedColor.colorTag2 }} 100%);"
+                  [style.--color-tag1]="part.selectedColor.colorTag"
+                  [style.--color-tag2]="part.selectedColor.colorTag2"
                 ></div>
                 {{ part.selectedColor.name }}
               </div>
@@ -48,11 +46,8 @@
               <div class="color-option">
                 <div
                   class="color-option-exmp"
-                  style="background: linear-gradient(to bottom right, {{
-                    _color.colorTag
-                  }} 0%,{{ _color.colorTag }} 50%,{{ _color.colorTag2 }} 51%,{{
-                    _color.colorTag2
-                  }} 100%);"
+                  [style.--color-tag1]="_color.colorTag"
+                  [style.--color-tag2]="_color.colorTag2"
                 ></div>
                 {{ _color.name }}
               </div>
@@ -63,6 +58,7 @@
         }
       </div>
 
+      <h4>נתונים נוספים</h4>
       <mat-form-field class="model-page-content-shopping-notes">
         <mat-label>הערה</mat-label>
         <input matInput [value]="_model.note" />
