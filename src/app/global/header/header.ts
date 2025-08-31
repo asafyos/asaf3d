@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { CartService } from '../../services/cart-service';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,10 @@ export class Header {
 
   openMenu(event: Event) {
     this.openSidenav.next();
+
+  }
+
+  constructor(public cart: CartService) {
 
   }
 }

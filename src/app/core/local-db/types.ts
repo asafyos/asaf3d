@@ -14,12 +14,15 @@ export type Model = {
     invisible: boolean,
     categories: Category[],
     parts: ModelPart[]
+    note?: string;
+    quantity?: number;
 }
 
 export type ModelPart = {
     id: number,
     name: string,
     weight: number, // grams
+    selectedColor?: Color
 }
 
 export type Color = {

@@ -1,0 +1,90 @@
+@if (model$ | async; as _model) {
+<div class="model-page">
+  <h1 class="model-page-title">{{ _model.name }}</h1>
+  <a class="model-page-link" href="{{ _model.modelUrl }}" target="_blank"
+    >לעמוד המודל</a
+  >
+  <div class="model-page-content">
+    <div class="model-page-content-image">
+      <img src="{{ _model.imageUrl }}" />
+      <div class="model-page-content-categories">
+        @for (category of _model.categories; track $index) {
+        <mat-chip>{{ category.name }}</mat-chip>
+        }
+      </div>
+    </div>
+    <div class="model-page-content-shopping">
+      <h3>צבעים למודל</h3>
+      <div class="model-page-content-shopping-model-parts">
+        @for (part of _model.parts; track $index) {
+        <!-- <h4 class="model-page-content-shopping-model-parts-part-name">
+          {{ part.name }}
+        </h4> -->
+        <mat-form-field>
+          <mat-label>{{ part.name }}</mat-label>
+          <mat-select
+            [required]="true"
+            class="model-page-content-shopping-model-parts-part-color"
+            [(ngModel)]="part.selectedColor"
+            (ngModelChange)="updatePrice()"
+          >
+            <mat-select-trigger>
+              @if (part.selectedColor) {
+              <div class="color-option">
+                <div
+                  class="color-option-exmp"
+                  style="background: linear-gradient(to bottom right, {{
+                    part.selectedColor.colorTag
+                  }} 0%,{{ part.selectedColor.colorTag }} 50%,{{
+                    part.selectedColor.colorTag2
+                  }} 51%,{{ part.selectedColor.colorTag2 }} 100%);"
+                ></div>
+                {{ part.selectedColor.name }}
+              </div>
+              }
+            </mat-select-trigger>
+            @for (_color of (colors$ | async); track $index) {
+            <mat-option [value]="_color">
+              <div class="color-option">
+                <div
+                  class="color-option-exmp"
+                  style="background: linear-gradient(to bottom right, {{
+                    _color.colorTag
+                  }} 0%,{{ _color.colorTag }} 50%,{{ _color.colorTag2 }} 51%,{{
+                    _color.colorTag2
+                  }} 100%);"
+                ></div>
+                {{ _color.name }}
+              </div>
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        }
+      </div>
+
+      <mat-form-field class="model-page-content-shopping-notes">
+        <mat-label>הערה</mat-label>
+        <input matInput [value]="_model.note" />
+      </mat-form-field>
+
+      <div class="model-page-content-shopping-add">
+        <mat-form-field>
+          <mat-label>כמות</mat-label>
+          <input
+            matInput
+            type="number"
+            [(ngModel)]="_model.quantity"
+            (ngModelChange)="updatePrice()"
+            [min]="1"
+          />
+        </mat-form-field>
+        <button matButton="filled">
+          <mat-icon>add_shopping_cart</mat-icon>
+          הוספה לעגלה ({{ price$ | async }}₪)
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+}

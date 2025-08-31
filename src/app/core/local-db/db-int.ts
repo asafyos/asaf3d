@@ -6,4 +6,9 @@ export interface dbInt {
     getColors(): Promise<Color[]>;
 
     getModels(category?: number): Promise<Model[]>;
+    getModel(modelId: number): Promise<Model | null>;
+
+    getPrintBaseParams(): Promise<{
+        modelBaseCost: number; avgColorPrice: number; hourBaseCost: number;
+    }>;
 }

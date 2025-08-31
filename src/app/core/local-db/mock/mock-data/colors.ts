@@ -7,8 +7,8 @@ export const colors: Color[] = [
         imageUrl: "",
         kgPrice: 86,
         outOfStock: false,
-        colorTag: "000000",
-        colorTag2: ""
+        colorTag: "#000000",
+        colorTag2: "#000000"
     },
     {
         id: 2,
@@ -16,8 +16,8 @@ export const colors: Color[] = [
         imageUrl: "",
         kgPrice: 65,
         outOfStock: false,
-        colorTag: "FFFFFF",
-        colorTag2: ""
+        colorTag: "#FFFFFF",
+        colorTag2: "#FFFFFF"
     },
     {
         id: 3,
@@ -25,8 +25,8 @@ export const colors: Color[] = [
         imageUrl: "",
         kgPrice: 85,
         outOfStock: false,
-        colorTag: "FF0000",
-        colorTag2: ""
+        colorTag: "#FF0000",
+        colorTag2: "#FF0000"
     },
     {
         id: 4,
@@ -34,7 +34,7 @@ export const colors: Color[] = [
         imageUrl: "",
         kgPrice: 115,
         outOfStock: false,
-        colorTag: "4E007A",
-        colorTag2: "E4A700"
+        colorTag: "#4E007A",
+        colorTag2: "#E4A700"
     },
 ]

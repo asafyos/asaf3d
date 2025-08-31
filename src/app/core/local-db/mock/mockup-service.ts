@@ -25,4 +25,14 @@ export class MockupService implements dbInt {
     });
   }
 
+  getModel(modelId: number): Promise<Model | null> {
+    return new Promise(resolve => {
+      const model: Model | null = models.find(m => m.id == modelId) || null
+      resolve(model);
+    });
+  }
+
+  getPrintBaseParams(): Promise<{ modelBaseCost: number; avgColorPrice: number; hourBaseCost: number; }> {
+    return new Promise(resolve => resolve({ modelBaseCost: 5, avgColorPrice: 89, hourBaseCost: 5 }));
+  }
 }

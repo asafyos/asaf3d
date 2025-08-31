@@ -8,8 +8,19 @@
     <img src="Logo version 2.svg" class="header-logo-img" />
   </div>
   <div>
-    <button matIconButton>
-      <mat-icon routerLink="/account">account_circle</mat-icon>
+    @if (cart.items$ | async; as items) {
+    <button
+      matIconButton
+      matBadge="{{ items.length }}"
+      matBadgePosition="before"
+      matBadgeHidden="{{ items.length == 0 }}"
+    >
+      <mat-icon routerLink="/cart">shopping_cart</mat-icon>
     </button>
+    } @else {
+    <button matIconButton>
+      <mat-icon routerLink="/cart">shopping_cart</mat-icon>
+    </button>
+    }
   </div>
 </div>

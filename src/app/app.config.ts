@@ -6,16 +6,13 @@ import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { LocalDbService } from './core/local-db/local-db-service';
 import { MockupService } from './core/local-db/mock/mockup-service';
+import { CartService } from './services/cart-service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    {
-      provide: LocalDbService,
-      useClass: environment.mock ? MockupService : LocalDbService,
-    },
     {
       provide: MAT_DATE_LOCALE,
       useValue: "he-IL",
@@ -24,5 +21,10 @@ export const appConfig: ApplicationConfig = {
       provide: LOCALE_ID,
       useValue: "he-IL",
     },
+    {
+      provide: LocalDbService,
+      useClass: environment.mock ? MockupService : LocalDbService,
+    },
+    CartService,
   ]
 };

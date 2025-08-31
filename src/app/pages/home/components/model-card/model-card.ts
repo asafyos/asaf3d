@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Model } from '../../../../core/local-db/types';
 
 @Component({
@@ -12,5 +13,13 @@ export class ModelCard {
 
   @Input()
   model: Model | null = null;
+
+  constructor(private _router: Router) {
+
+  }
+
+  openModel(): void {
+    this._router.navigate(['/model', this.model?.id])
+  }
 
 }
