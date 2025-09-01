@@ -40,11 +40,35 @@
             }
         }
 
-        &-categories {
-            margin-block-start: 0.5rem;
+        &-description {
+            display: flex;
+            flex-direction: column;
 
-            >mat-chip {
-                margin-inline-end: 0.5rem;
+            @media (min-width: 601px) {
+                flex-direction: row;
+            }
+
+            &-categories {
+                margin-block-start: 0.5rem;
+                width: 100%;
+
+                >mat-chip {
+                    margin-inline-end: 0.5rem;
+                }
+            }
+
+            &-dimensions {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                @media (max-width: 600px) {
+                    margin-block-start: 0.5rem;
+                }
+
+                @media (min-width: 601px) {
+                    // align-items: end;
+                }
             }
         }
 

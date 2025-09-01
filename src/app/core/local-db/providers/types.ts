@@ -10,6 +10,9 @@ export type model = {
     modelUrl: string,
     printTime: number,
     invisible: boolean,
+    height: number,
+    width: number,
+    depth: number,
 }
 
 export type modelCategories = {
@@ -31,7 +34,7 @@ export type color = {
     kgPrice: number,
     outOfStock: boolean,
     colorTag: string,
-    colorTag2: string    
+    colorTag2: string
 }
 
 export type role = {

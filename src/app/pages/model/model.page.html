@@ -7,10 +7,21 @@
   <div class="model-page-content">
     <div class="model-page-content-image">
       <img src="{{ _model.imageUrl }}" />
-      <div class="model-page-content-categories">
-        @for (category of _model.categories; track $index) {
-        <mat-chip>{{ category.name }}</mat-chip>
-        }
+      <div class="model-page-content-description">
+        <div class="model-page-content-description-categories">
+          @for (category of _model.categories; track $index) {
+          <mat-chip>{{ category.name }}</mat-chip>
+          }
+        </div>
+        <div class="model-page-content-description-dimensions">
+          @if (_model.height) {
+          <span>גובה: {{ _model.height }} ס"מ</span>
+          } @if (_model.width) {
+          <span>רוחב: {{ _model.width }} ס"מ</span>
+          } @if (_model.depth) {
+          <span>עומק: {{ _model.depth }} ס"מ</span>
+          }
+        </div>
       </div>
     </div>
     <div class="model-page-content-shopping">

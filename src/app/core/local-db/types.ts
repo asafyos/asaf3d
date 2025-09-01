@@ -12,6 +12,9 @@ export type Model = {
     modelUrl: string,
     printTime: number, // minutes
     invisible: boolean,
+    height?: number,
+    width?: number,
+    depth?: number,
     categories: Category[],
     parts: ModelPart[]
     note?: string;

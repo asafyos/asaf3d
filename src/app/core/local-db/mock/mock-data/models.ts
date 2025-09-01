@@ -18,10 +18,10 @@ export const models: Model[] = [
     },
     {
         id: 2,
-        name: "ארנב סרוג",
+        name: "לבובו",
         imageUrl: "https://makerworld.bblmw.com/makerworld/model/US80de0324342069/design/2025-06-04_fd00acd5c2f798.jpg?x-oss-process=image/resize,w_1000/format,webp",
         modelUrl: "https://makerworld.com/en/models/1485568-labubu-keychain-version",
-        printTime: 74,
+        printTime: 84,
         invisible: false,
         categories: [categories[2], categories[3]],
         parts: [{
@@ -37,6 +37,9 @@ export const models: Model[] = [
         modelUrl: "https://makerworld.com/en/models/593330-v2-mini-vortex-thread-hexagon-illusion#profileId-515130",
         printTime: 74,
         invisible: false,
+        height: 8,
+        width: 3,
+        depth: 3,
         categories: [categories[1]],
         parts: [{
             id: 3,
