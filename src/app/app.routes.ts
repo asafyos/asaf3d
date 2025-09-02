@@ -12,6 +12,11 @@ export const routes: Routes = [
     },
 
     {
+        path: "models",
+        loadChildren: () => import('./pages/models-search/models-search-module').then((m) => m.ModelsSearchModule),
+    },
+
+    {
         path: "",
         loadChildren: () => import('./pages/home/home-module').then((m) => m.HomeModule),
     },

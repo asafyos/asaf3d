@@ -1,5 +1,9 @@
 .model-card {
-    max-width: 250px;
+    max-width: 12rem;
+
+    @media (max-width: 600px) {
+        max-width: 12rem;
+    }
 
     &-title {
         align-self: center;

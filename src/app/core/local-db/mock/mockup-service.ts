@@ -15,10 +15,19 @@ export class MockupService implements dbInt {
     return new Promise(resolve => resolve(colors));
   }
 
-  getModels(category?: number): Promise<Model[]> {
+  getModels(search?: { category?: number, searchVal?: string }): Promise<Model[]> {
     return new Promise(resolve => {
-      if (category) {
-        resolve(models.filter(m => m.categories.some(c => c.id === category)));
+      if (search) {
+        resolve(models.filter(m => {
+          var yes = true;
+          if (search.searchVal) {
+            yes = m.name.includes(search.searchVal);
+          }
+          if (yes && search.category) {
+            yes = yes && m.categories.some(c => c.id === search.category);
+          }
+          return yes;
+        }));
       } else {
         resolve(models);
       }

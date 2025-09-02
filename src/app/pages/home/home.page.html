@@ -1,2 +1,27 @@
-<h2>הנמכרים ביותר</h2>
-<app-model-card [model]="model1 | async"></app-model-card>
+<div class="home">
+
+    
+    <mat-form-field class="example-form-field" >
+        <mat-label>חיפוש</mat-label>
+        <input matInput type="text" [(ngModel)]="searchVal" (keyup.enter)="onSearch()">
+        <button matSuffix matIconButton aria-label="Clear" (click)="onSearch()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+
+    @if (categories$ | async; as categories) {
+        <h2 class="home-subtitle">קטגוריות</h2>
+        <div class="home-subgroup home-categories">
+            
+            @for (category of categories; track $index) {
+                <mat-chip (click)="navToSearch(category.id)">{{ category.name }}</mat-chip>
+            }
+        </div>
+    }
+    
+    <h2 class="home-subtitle">הנמכרים ביותר</h2>
+    <div class="home-subgroup">
+        <app-model-card [model]="model1$ | async"></app-model-card>
+    </div>
+    
+</div>

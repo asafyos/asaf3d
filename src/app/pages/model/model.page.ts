@@ -63,8 +63,6 @@ export class ModelPage {
         }, 0)
 
         const finalPrice = Math.ceil(Math.max(this.modelBaseCost, this.hourBaseCost * m.printTime / 60) + partsSumPrice) * (m.quantity || 1);
-        console.log("price", finalPrice);
-
 
         resolve(finalPrice);
         // Item price = ceil(max(itemBase, hourBase*printTime) + sum({colors} weight*kgPrice/1000))

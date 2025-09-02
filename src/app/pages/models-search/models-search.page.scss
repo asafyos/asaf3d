@@ -1,0 +1,21 @@
+.models {
+    width: 80%;
+    margin-inline: 10%;
+    margin-block-start: 2rem;
+
+    @media (max-width: 600px) {
+        width: 100%;
+        margin-inline: 0;
+    }
+
+    &-search {}
+
+    &-cards {
+
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+        justify-items: center;
+        gap: 1rem;
+    }
+
+}

@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { Carousel } from './carousel/carousel';
 import { Header } from './header/header';
 import { SideMenu } from './side-menu/side-menu';
 
@@ -13,7 +12,6 @@ import { SideMenu } from './side-menu/side-menu';
   declarations: [
     Header,
     SideMenu,
-    Carousel,
   ],
   imports: [
     CommonModule,

@@ -5,7 +5,7 @@ export interface dbInt {
     getCategories(): Promise<Category[]>;
     getColors(): Promise<Color[]>;
 
-    getModels(category?: number): Promise<Model[]>;
+    getModels(search?: { category?: number, searchVal?: string }): Promise<Model[]>;
     getModel(modelId: number): Promise<Model | null>;
 
     getPrintBaseParams(): Promise<{

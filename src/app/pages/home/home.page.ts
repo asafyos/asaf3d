@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { LocalDbService } from '../../core/local-db/local-db-service';
-import { Model } from '../../core/local-db/types';
+import { Category, Model } from '../../core/local-db/types';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +13,36 @@ import { Model } from '../../core/local-db/types';
 })
 export class HomePage {
 
-  topSellModels: ReplaySubject<Model[]> = new ReplaySubject(1);
-  model1: ReplaySubject<Model> = new ReplaySubject(1);
+  topSellModels$: ReplaySubject<Model[]> = new ReplaySubject(1);
+  model1$: ReplaySubject<Model> = new ReplaySubject(1);
+  categories$: ReplaySubject<Category[]> = new ReplaySubject(1);
 
-  constructor(private _localDb: LocalDbService) {
-    _localDb.getModels().then((_models) => {
-      this.topSellModels.next(_models)
-      this.model1.next(_models[0] || null);
+  searchVal: string = '';
+
+  constructor(
+    private _localDb: LocalDbService,
+    private _router: Router,
+  ) {
+    _localDb.getModels().then((models) => {
+      this.topSellModels$.next(models)
+      this.model1$.next(models[0] || null);
     })
+
+    _localDb.getCategories().then((categories) => {
+      this.categories$.next(categories);
+    })
+  }
+
+  onSearch(): void {
+    this._router.navigate(['/models'], {
+      queryParams: { search: this.searchVal }
+    });
+  }
+
+  navToSearch(categoryId: number): void {
+    this._router.navigate(['/models'], {
+      queryParams: { category: categoryId }
+    });
   }
 
 }

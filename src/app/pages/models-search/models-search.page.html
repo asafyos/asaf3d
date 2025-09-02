@@ -1,0 +1,12 @@
+<div class="models">
+    <div class="models-search">
+
+    </div>
+    <div class="models-cards">
+        @if (models$ | async; as models) {
+        @for (model of models; track $index) {
+        <app-model-card [model]="model"></app-model-card>
+        }
+        }
+    </div>
+</div>

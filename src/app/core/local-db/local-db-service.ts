@@ -12,7 +12,7 @@ export class LocalDbService implements dbInt {
   getColors(): Promise<Color[]> {
     throw new Error('Method not implemented.');
   }
-  getModels(category?: number): Promise<Model[]> {
+  getModels(search?: { category?: number, searchVal?: string }): Promise<Model[]> {
     throw new Error('Method not implemented.');
   }
   getModel(modelId: number): Promise<Model | null> {
