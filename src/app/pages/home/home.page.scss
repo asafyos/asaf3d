@@ -1,15 +1,15 @@
 .home {
-
     width: 80%;
     margin-inline: 10%;
-    margin-block-start: 2rem;
-    display: flex;
-    flex-direction: column;
+    margin-block: 2rem;
 
     @media (max-width: 600px) {
         width: 100%;
         margin-inline: 0;
     }
+
+    display: flex;
+    flex-direction: column;
 
     &-subtitle {
         width: 100%;

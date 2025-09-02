@@ -29,6 +29,8 @@ export class HomePage {
     })
 
     _localDb.getCategories().then((categories) => {
+      categories.push(...categories)
+      categories.push(...categories)
       this.categories$.next(categories);
     })
   }

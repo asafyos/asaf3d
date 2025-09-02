@@ -1,6 +1,15 @@
 @import url('../../../style/mixin.scss');
 
 .model-page {
+    width: 80%;
+    margin-inline: 10%;
+    margin-block: 2rem;
+
+    @media (max-width: 600px) {
+        width: 100%;
+        margin-inline: 0;
+    }
+
     &-title {}
 
     &-link {

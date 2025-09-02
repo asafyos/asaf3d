@@ -1,12 +1,22 @@
 <div class="models">
-    <div class="models-search">
+    <div class="models-secondery">
+        <mat-form-field class="models-main-input">
+            <mat-label>חיפוש</mat-label>
+            <input matInput type="text" [(ngModel)]="searchVal" (keyup.enter)="onSearch()">
+            <button matSuffix matIconButton aria-label="Clear" (click)="onSearch()">
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
 
     </div>
-    <div class="models-cards">
-        @if (models$ | async; as models) {
-        @for (model of models; track $index) {
-        <app-model-card [model]="model"></app-model-card>
-        }
-        }
+    <div class="models-main">
+
+        <div class="models-main-cards">
+            @if (models$ | async; as models) {
+            @for (model of models; track $index) {
+            <app-model-card [model]="model"></app-model-card>
+            }
+            }
+        </div>
     </div>
 </div>

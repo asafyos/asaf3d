@@ -1,21 +1,44 @@
 .models {
     width: 80%;
     margin-inline: 10%;
-    margin-block-start: 2rem;
+    margin-block: 2rem;
 
     @media (max-width: 600px) {
         width: 100%;
         margin-inline: 0;
+        flex-direction: column;
     }
 
-    &-search {}
+    display: flex;
+    flex-direction: row;
 
-    &-cards {
+    &-secondery {
+        display: flex;
+        flex-direction: column;
 
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-        justify-items: center;
-        gap: 1rem;
+        @media (min-width: 601px) {
+            width: 20rem;
+            border-inline-end: 1px solid black;
+            margin-inline-end: 1rem;
+            padding-inline-end: 1rem;
+        }
+
+    }
+
+    &-main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        &-input {}
+
+        &-cards {
+
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+            justify-items: center;
+            gap: 1rem;
+        }
     }
 
 }
