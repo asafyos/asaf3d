@@ -4,15 +4,15 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { ModelCard } from './components/model-card/model-card';
+import { ModelCard } from '../../components/model-card/model-card';
 import { HomeRoutingModule } from './home-routing-module';
 import { HomePage } from './home.page';
+
 
 
 @NgModule({
   declarations: [
     HomePage,
-    ModelCard
   ],
   imports: [
     CommonModule,
@@ -21,6 +21,7 @@ import { HomePage } from './home.page';
     MatButtonModule,
     MatIconModule,
     AsyncPipe,
+    ModelCard,
   ]
 })
 export class HomeModule { }
