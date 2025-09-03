@@ -1,0 +1,148 @@
+@import url('../../../style/mixin.scss');
+
+.model-page {
+    width: 80%;
+    margin-inline: 10%;
+    margin-block: 2rem;
+
+    @media (max-width: 600px) {
+        width: 100%;
+        margin-inline: 0;
+    }
+
+    &-title {}
+
+    &-link {
+        text-decoration: none;
+        font-weight: bolder;
+        color: var(--link-color);
+    }
+
+    &-content {
+        margin-block-start: 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+        }
+
+        &-image {
+
+            @media (max-width: 600px) {
+                max-width: 90vw;
+            }
+
+            @media (min-width: 601px) {
+                max-height: 60vh;
+            }
+
+            >img {
+                @media (max-width: 600px) {
+                    width: -webkit-fill-available;
+                }
+
+                @media (min-width: 601px) {
+                    max-height: inherit;
+                }
+            }
+        }
+
+        &-description {
+            display: flex;
+            flex-direction: column;
+
+            @media (min-width: 601px) {
+                flex-direction: row;
+            }
+
+            &-categories {
+                margin-block-start: 0.5rem;
+                width: 100%;
+
+                >mat-chip {
+                    margin-inline-end: 0.5rem;
+                }
+            }
+
+            &-dimensions {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                @media (max-width: 600px) {
+                    margin-block-start: 0.5rem;
+                }
+
+                @media (min-width: 601px) {
+                    // align-items: end;
+                }
+            }
+        }
+
+        &-shopping {
+            max-width: 40rem;
+
+            &-model-parts {
+                display: flex;
+                flex-direction: column;
+                // display: grid;
+                // grid-template-columns: 1fr 3fr;
+                // gap: 0.25rem;
+
+                &-part {
+                    &-name {
+                        margin-block: 0;
+                        margin-inline-end: 1rem;
+                    }
+
+                    &-color {
+
+                        // background-color: #eeeeee;
+                        // max-width: 20rem;
+
+                        ::ng-deep .mat-mdc-select-value {
+                            margin-inline-start: 1rem;
+                        }
+
+                        ::ng-deep .mat-mdc-select-arrow-wrapper {
+                            margin-inline-end: 1rem;
+                        }
+                    }
+                }
+
+            }
+
+            &-notes {
+                width: 100%;
+            }
+
+            &-add {
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+
+                >button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+
+}
+
+.color-option {
+    display: flex;
+    gap: 0.5rem;
+
+    &-exmp {
+        // @include color-mark;
+        width: 1em;
+        height: 1em;
+        border-radius: 0.5rem;
+        background: linear-gradient(to bottom right, var(--color-tag1) 0%, var(--color-tag1) 50%, var(--color-tag2) 51%, var(--color-tag2) 100%);
+        align-self: center;
+    }
+}

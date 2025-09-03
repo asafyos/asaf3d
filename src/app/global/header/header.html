@@ -1,0 +1,26 @@
+<div class="header">
+  <div>
+    <button matIconButton (click)="openMenu($event)">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div class="header-logo">
+    <img src="Logo version 2.svg" class="header-logo-img" routerLink="/home" />
+  </div>
+  <div>
+    @if (cart.items$ | async; as items) {
+    <button
+      matIconButton
+      matBadge="{{ items.length }}"
+      matBadgePosition="before"
+      matBadgeHidden="{{ items.length == 0 }}"
+    >
+      <mat-icon routerLink="/cart">shopping_cart</mat-icon>
+    </button>
+    } @else {
+    <button matIconButton>
+      <mat-icon routerLink="/cart">shopping_cart</mat-icon>
+    </button>
+    }
+  </div>
+</div>

@@ -1,3 +1,27 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {
+        path: "home",
+        redirectTo: "/"
+    },
+
+    {
+        path: "model/:id",
+        loadChildren: () => import('./pages/model/model-module').then((m) => m.ModelModule),
+    },
+
+    {
+        path: "models",
+        loadChildren: () => import('./pages/models-search/models-search-module').then((m) => m.ModelsSearchModule),
+    },
+
+    {
+        path: "",
+        loadChildren: () => import('./pages/home/home-module').then((m) => m.HomeModule),
+    },
+    {
+        path: "**",
+        redirectTo: "/"
+    }
+];

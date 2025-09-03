@@ -1,0 +1,18 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    &-sidenav {
+        height: -webkit-fill-available;
+    }
+
+    &-content {
+        margin-inline: 1vw;
+
+        @media (max-width: 600px) {
+            margin-inline: 5vw;
+        }
+    }
+}

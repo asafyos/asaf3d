@@ -5,15 +5,30 @@
   "projects": {
     "asaf3d": {
       "i18n": {
-        "sourceLocale": "he-IL",
+        "sourceLocale": "he",
         "locales": {
           "en-US": "src/locale/i18n.en.json"
         }
       },
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "skipTests": true,
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -24,7 +39,7 @@
           "builder": "@angular/build:application",
           "options": {
             "localize": [
-              "he-IL"
+              "he"
             ],
             "browser": "src/main.ts",
             "polyfills": [
