@@ -9,6 +9,9 @@ export interface dbInt {
     getModel(modelId: number): Promise<Model | null>;
 
     getPrintBaseParams(): Promise<{
-        modelBaseCost: number; avgColorPrice: number; hourBaseCost: number;
+        modelBaseCost: number;
+        avgColorPrice: number;
+        hourBaseCost: number;
+        amsExtraPercentage: number;
     }>;
 }

@@ -18,6 +18,7 @@ export class ModelPage {
   modelBaseCost: number = 0;
   avgColorPrice: number = 0;
   hourBaseCost: number = 0;
+  amsExtraPercentage: number = 0;
 
   price$: ReplaySubject<number> = new ReplaySubject(1);
 
@@ -29,10 +30,11 @@ export class ModelPage {
   ngOnInit(): void {
     const id = this._route.snapshot.paramMap.get('id');
 
-    this._db.getPrintBaseParams().then(({ modelBaseCost, avgColorPrice, hourBaseCost }) => {
+    this._db.getPrintBaseParams().then(({ modelBaseCost, avgColorPrice, hourBaseCost, amsExtraPercentage }) => {
       this.modelBaseCost = modelBaseCost;
       this.avgColorPrice = avgColorPrice;
       this.hourBaseCost = hourBaseCost;
+      this.amsExtraPercentage = amsExtraPercentage;
     })
 
     if (id != null) {
@@ -62,10 +64,11 @@ export class ModelPage {
           return val + (p.weight * (p.selectedColor?.kgPrice || this.avgColorPrice) / 1000)
         }, 0)
 
-        const finalPrice = Math.ceil(Math.max(this.modelBaseCost, this.hourBaseCost * m.printTime / 60) + partsSumPrice) * (m.quantity || 1);
+        const singlePrice = Math.ceil(Math.max(this.modelBaseCost, this.hourBaseCost * m.printTime / 60) + partsSumPrice);
+        const finalPrice = singlePrice * (m.quantity || 1) + Math.ceil(singlePrice * (m.ams ? this.amsExtraPercentage : 0));
 
         resolve(finalPrice);
-        // Item price = ceil(max(itemBase, hourBase*printTime) + sum({colors} weight*kgPrice/1000))
+        // Item price = ceil((max(itemBase, hourBase*printTime) + sum({colors} weight*kgPrice/1000))*amsModificator)
       })
     })
   }

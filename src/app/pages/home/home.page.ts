@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { LocalDbService } from '../../core/local-db/local-db-service';
 import { Category, Model } from '../../core/local-db/types';
 
@@ -14,7 +15,6 @@ import { Category, Model } from '../../core/local-db/types';
 export class HomePage {
 
   topSellModels$: ReplaySubject<Model[]> = new ReplaySubject(1);
-  model1$: ReplaySubject<Model> = new ReplaySubject(1);
   categories$: ReplaySubject<Category[]> = new ReplaySubject(1);
 
   searchVal: string = '';
@@ -22,16 +22,20 @@ export class HomePage {
   constructor(
     private _localDb: LocalDbService,
     private _router: Router,
-  ) {
-    _localDb.getModels().then((models) => {
-      this.topSellModels$.next(models)
-      this.model1$.next(models[0] || null);
+  ) { }
+
+  ngOnInit(): void {
+    this._localDb.getModels().then((models) => {
+      this.topSellModels$.next(models.slice(0, 3))
     })
 
-    _localDb.getCategories().then((categories) => {
-      categories.push(...categories)
-      categories.push(...categories)
-      this.categories$.next(categories);
+    this._localDb.getCategories().then((categories) => {
+      const _categories = [...categories]
+      if (environment.mock) {
+        _categories.push(..._categories)
+        _categories.push(..._categories)
+      }
+      this.categories$.next(_categories);
     })
   }
 
@@ -41,7 +45,7 @@ export class HomePage {
     });
   }
 
-  navToSearch(categoryId: number): void {
+  navToSearch(categoryId?: number): void {
     this._router.navigate(['/models'], {
       queryParams: { category: categoryId }
     });

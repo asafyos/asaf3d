@@ -17,4 +17,8 @@ export const categories: Category[] = [
         id: 4,
         name: "מחזיק מפתחות"
     },
+    {
+        id: 5,
+        name: "פסלי חוליות"
+    }
 ]

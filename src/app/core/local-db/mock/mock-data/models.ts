@@ -15,6 +15,7 @@ export const models: Model[] = [
             name: "גוף",
             weight: 7
         }],
+        ams: false
     },
     {
         id: 2,
@@ -29,6 +30,7 @@ export const models: Model[] = [
             name: "גוף",
             weight: 14
         }],
+        ams: false
     },
     {
         id: 3,
@@ -50,5 +52,71 @@ export const models: Model[] = [
             name: "חיצוני",
             weight: 8
         }],
+        ams: false
+    },
+    {
+        id: 4,
+        name: "שועל חוליות",
+        imageUrl: "https://makerworld.bblmw.com/makerworld/model/USc87a3892cfd676/design/2025-01-27_a6addab2885db.png?x-oss-process=image/resize,w_1000/format,webp",
+        modelUrl: "https://makerworld.com/en/models/1046518-mini-articulated-fox?from=search#profileId-1032461",
+        printTime: 234,
+        invisible: false,
+        categories: [categories[4]],
+        parts: [{
+            id: 5,
+            name: "גוף",
+            weight: 24
+        }, {
+            id: 6,
+            name: "עיניים",
+            weight: 5
+        }, {
+            id: 7,
+            name: "זנב/פה",
+            weight: 41
+        }],
+        ams: true
+    },
+    {
+        id: 5,
+        name: "פנדה חוליות",
+        imageUrl: "https://makerworld.bblmw.com/makerworld/model/USc270519953202/design/2025-02-07_8a8f80b4831398.png?x-oss-process=image/resize,w_1000/format,webp",
+        modelUrl: "https://makerworld.com/en/models/1084489-mini-articulated-panda#profileId-1077026",
+        printTime: 174,
+        invisible: false,
+        categories: [categories[4]],
+        parts: [{
+            id: 8,
+            name: "לבן",
+            weight: 34
+        }, {
+            id: 9,
+            name: "שחור",
+            weight: 12
+        }],
+        ams: true
+    },
+    {
+        id: 6,
+        name: "פלטיפוס חוליות",
+        imageUrl: "https://makerworld.bblmw.com/makerworld/model/UScde8c6495d6e/design/2025-02-23_a59ad5712a7538.png?x-oss-process=image/resize,w_1000/format,webp",
+        modelUrl: "https://makerworld.com/en/models/1144178-mini-articulated-platypus-and-perry-the-platypus#profileId-1147048",
+        printTime: 162,
+        invisible: false,
+        categories: [categories[4]],
+        parts: [{
+            id: 10,
+            name: "גוף",
+            weight: 15
+        }, {
+            id: 11,
+            name: "עיניים",
+            weight: 2
+        }, {
+            id: 12,
+            name: "גפיים",
+            weight: 7
+        }],
+        ams: true
     },
 ];

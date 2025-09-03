@@ -41,7 +41,7 @@ export class MockupService implements dbInt {
     });
   }
 
-  getPrintBaseParams(): Promise<{ modelBaseCost: number; avgColorPrice: number; hourBaseCost: number; }> {
-    return new Promise(resolve => resolve({ modelBaseCost: 5, avgColorPrice: 89, hourBaseCost: 5 }));
+  getPrintBaseParams(): Promise<{ modelBaseCost: number; avgColorPrice: number; hourBaseCost: number; amsExtraPercentage: number; }> {
+    return new Promise(resolve => resolve({ modelBaseCost: 5, avgColorPrice: 89, hourBaseCost: 3, amsExtraPercentage: 0.15 }));
   }
 }

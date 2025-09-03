@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
@@ -24,6 +26,8 @@ import { ModelsSearchPage } from './models-search.page';
     FormsModule,
     MatIconModule,
     MatButtonModule,
+    MatDividerModule,
+    MatChipsModule,
   ]
 })
 export class ModelsSearchModule { }

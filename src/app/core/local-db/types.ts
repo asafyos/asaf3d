@@ -3,6 +3,7 @@
 export type Category = {
     id: number,
     name: string,
+    selected?: boolean,
 }
 
 export type Model = {
@@ -15,10 +16,11 @@ export type Model = {
     height?: number,
     width?: number,
     depth?: number,
+    ams: boolean,
     categories: Category[],
     parts: ModelPart[]
-    note?: string;
-    quantity?: number;
+    note?: string,
+    quantity?: number,
 }
 
 export type ModelPart = {

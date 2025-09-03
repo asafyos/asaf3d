@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ReplaySubject } from 'rxjs';
+import { debounceTime, ReplaySubject, take } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { LocalDbService } from '../../core/local-db/local-db-service';
-import { Model } from '../../core/local-db/types';
+import { Category, Model } from '../../core/local-db/types';
 
 @Component({
   selector: 'app-models-search',
@@ -14,6 +15,7 @@ import { Model } from '../../core/local-db/types';
 export class ModelsSearchPage {
 
   models$: ReplaySubject<Model[]> = new ReplaySubject(1);
+  categories$: ReplaySubject<Category[]> = new ReplaySubject(1);
 
   private _category: number | null = null;
   private _searchVal: string | null = null;
@@ -31,9 +33,20 @@ export class ModelsSearchPage {
       this._category = parseInt(params.get("category") || "NaN") || null;
       this._searchVal = params.get("search");
       this.searchVal.set(this._searchVal || "");
+      this.categories$.pipe(debounceTime(0), take(1)).subscribe(categories => {
+        categories.forEach(c => { c.selected = c.id == this._category });
+        this.categories$.next(categories);
+      })
 
       this.applyFilters();
     });
+
+    this._db.getCategories().then((categories) => {
+      if (this._category) {
+        categories.forEach(c => { c.selected = c.id == this._category });
+      }
+      this.categories$.next(categories);
+    })
   }
 
   applyFilters(): void {
@@ -43,15 +56,27 @@ export class ModelsSearchPage {
       category: this._category || undefined,
       searchVal: this._searchVal || undefined,
     }).then((models) => {
-      models.push(...models)
-      models.push(...models)
-      models.push(...models)
-      this.models$.next(models);
+      const _models = [...models];
+      if (environment.mock) {
+        _models.push(..._models)
+        _models.push(..._models)
+        _models.push(..._models)
+      }
+      this.models$.next(_models);
     });
   }
 
   onSearch(): void {
     this._searchVal = this.searchVal();
+    this.updateLocation();
+  }
+
+  selectCategory(categoryId: number, selected: boolean): void {
+    if (selected) {
+      this._category = categoryId;
+    } else {
+      this._category = null;
+    }
     this.updateLocation();
   }
 

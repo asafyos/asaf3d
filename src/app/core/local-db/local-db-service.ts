@@ -18,7 +18,7 @@ export class LocalDbService implements dbInt {
   getModel(modelId: number): Promise<Model | null> {
     throw new Error('Method not implemented.');
   }
-  getPrintBaseParams(): Promise<{ modelBaseCost: number; avgColorPrice: number; hourBaseCost: number; }> {
+  getPrintBaseParams(): Promise<{ modelBaseCost: number; avgColorPrice: number; hourBaseCost: number; amsExtraPercentage: number; }> {
     throw new Error('Method not implemented.');
   }
 
