@@ -3,14 +3,14 @@
     margin-inline: 10%;
     margin-block: 2rem;
 
+    display: flex;
+    flex-direction: row;
+
     @media (max-width: 600px) {
         width: 100%;
         margin-inline: 0;
         flex-direction: column;
     }
-
-    display: flex;
-    flex-direction: row;
 
     &-secondery {
         display: flex;
@@ -61,12 +61,12 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
 
+            justify-items: center;
+            gap: 1rem;
+
             @media (max-width: 600px) {
                 grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
             }
-
-            justify-items: center;
-            gap: 1rem;
         }
     }
 
