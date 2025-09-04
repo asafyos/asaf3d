@@ -1,10 +1,40 @@
-<div class="cart">
-  <h1 class="cart-header">עגלה</h1>
-  @if (items$ | async; as items) {
-  <div class="cart-items">
-    @for (item of items; track $index) {
-    <cart-order-item [item]="item"></cart-order-item>
-    }
+@if (order$ | async; as order) {
+<div class="cart big-screen">
+  <div class="cart-content">
+    <h1 class="cart-content-header">עגלה</h1>
+    @if (order.items) {
+    <div class="cart-content-items">
+      @for (item of order.items; track $index) {
+      <cart-order-item [item]="item"></cart-order-item>
+      }
+    </div>
+    } @else { }
   </div>
-  } @else { }
+  <mat-divider [vertical]="true"></mat-divider>
+  <div class="cart-summary">
+    <cart-summary [order]="order"></cart-summary>
+  </div>
 </div>
+
+<div class="cart small-screen">
+  <h1 class="cart-header">עגלה</h1>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true" togglePosition="before">
+      <mat-expansion-panel-header>
+        <mat-panel-title>מוצרים</mat-panel-title>
+      </mat-expansion-panel-header>
+      @if (order.items) {
+      <div class="cart-items">
+        @for (item of order.items; track $index) {
+        <cart-order-item [item]="item"></cart-order-item>
+        }
+      </div>
+      } @else { }
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-divider></mat-divider>
+  <div class="cart-summary">
+    <cart-summary [order]="order"></cart-summary>
+  </div>
+</div>
+}

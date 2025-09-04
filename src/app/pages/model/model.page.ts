@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime, ReplaySubject, take } from 'rxjs';
 import { LocalDbService } from '../../core/local-db/local-db-service';
 import { Color, Model, OrderItem } from '../../core/local-db/types';
@@ -22,6 +22,7 @@ export class ModelPage {
 
   constructor(
     private _route: ActivatedRoute,
+    private _router: Router,
     private _db: LocalDbService,
     private _cart: CartService,
   ) { }
@@ -32,20 +33,8 @@ export class ModelPage {
     if (id != null) {
       this._db.getModel(parseInt(id)).then((_model) => {
         if (_model) {
-          this.model$.next(_model)
-          const orderItem: OrderItem = {
-            model: _model,
-            quantity: 1,
-            notes: '',
-            custom: false,
-            finalPrice: 0,
-            colors: _model.parts.map(part => ({
-              part,
-              notes: "",
-              color: undefined
-            }))
-          };
-          this.orderItem$.next(orderItem);
+          this.model$.next(_model);
+          this.clearScreen(_model);
         }
       })
     }
@@ -63,9 +52,32 @@ export class ModelPage {
   addToCart(item: OrderItem): void {
     if (this._cart.validateOrderItemColors(item)) {
       this._cart.addModel(item);
+      this.model$.pipe(debounceTime(0), take(1)).subscribe(model => this.clearScreen(model));
     } else {
       // TODO: Error message select all colors
     }
+  }
+
+  clearScreen(model: Model): void {
+    const orderItem: OrderItem = {
+      model: model,
+      quantity: 1,
+      notes: '',
+      custom: false,
+      finalPrice: 0,
+      colors: model.parts.map(part => ({
+        part,
+        notes: "",
+        color: undefined
+      }))
+    };
+    this.orderItem$.next(orderItem);
+  }
+
+  navToSearch(categoryId?: number): void {
+    this._router.navigate(['/models'], {
+      queryParams: { category: categoryId }
+    });
   }
 
 }

@@ -61,7 +61,7 @@ export type order = {
     user: number, // user.id
     status: number, // status.id
     name?: string,
-    phone?: number,
+    phone?: string,
     finalPrice: number,
 }
 

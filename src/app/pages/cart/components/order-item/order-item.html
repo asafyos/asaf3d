@@ -1,5 +1,30 @@
-@if (item) {
 <mat-card>
-  <mat-card-header>{{ item.model.name || "" }}</mat-card-header>
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>
+        {{ item.model.name || "" }} ({{item.finalPrice}}₪)
+      </mat-card-title>
+      <mat-card-subtitle>{{subtitle()}}</mat-card-subtitle>
+      @if (item.notes) {
+      <mat-card-subtitle>
+        הערה: {{item.notes}}
+      </mat-card-subtitle>
+      }
+      <mat-card-subtitle>
+        <mat-form-field>
+          <mat-label>
+            כמות:
+          </mat-label>
+          <input matInput type="number" [(ngModel)]="item.quantity" min="0" (ngModelChange)="updateQuantity()" />
+        </mat-form-field>
+      </mat-card-subtitle>
+      <img mat-card-sm-image [src]="item.model.imageUrl" class="img-small">
+      <img mat-card-lg-image [src]="item.model.imageUrl" class="img-large">
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-actions>
+    <button matIconButton (click)="removeItem()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
 </mat-card>
-}

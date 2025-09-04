@@ -82,6 +82,14 @@ export class CartService {
     });
   }
 
+  public removeItem(item: OrderItem): void {
+    const idx = this._items.indexOf(item);
+    if (idx >= 0) {
+      this._items.splice(idx, 1);
+      this.items$.next(this._items);
+    }
+  }
+
   private restoreCookieCart(): void {
     const cartStr = Cookies.get(CART_COOKIE);
     if (cartStr) {

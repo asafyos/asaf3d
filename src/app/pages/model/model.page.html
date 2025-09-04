@@ -1,16 +1,14 @@
 @if (model$ | async; as _model) {
 <div class="model-page">
   <h1 class="model-page-title">{{ _model.name }}</h1>
-  <a class="model-page-link" href="{{ _model.modelUrl }}" target="_blank"
-    >לעמוד המודל</a
-  >
+  <a class="model-page-link" href="{{ _model.modelUrl }}" target="_blank">לעמוד המודל</a>
   <div class="model-page-content">
     <div class="model-page-content-image">
       <img src="{{ _model.imageUrl }}" />
       <div class="model-page-content-description">
         <div class="model-page-content-description-categories">
           @for (category of _model.categories; track $index) {
-          <mat-chip>{{ category.name }}</mat-chip>
+          <mat-chip (click)="navToSearch(category.id)">{{ category.name }}</mat-chip>
           }
         </div>
         <div class="model-page-content-description-dimensions">
@@ -32,20 +30,13 @@
         @for (color of _item.colors; track $index) {
         <mat-form-field>
           <mat-label>{{ color.part.name }}</mat-label>
-          <mat-select
-            [required]="true"
-            class="model-page-content-shopping-model-parts-part-color"
-            [(ngModel)]="color.color"
-            (ngModelChange)="updatePrice()"
-          >
+          <mat-select class="model-page-content-shopping-model-parts-part-color" [(ngModel)]="color.color"
+            (ngModelChange)="updatePrice()">
             <mat-select-trigger>
               @if (color.color) {
               <div class="color-option">
-                <div
-                  class="color-option-exmp"
-                  [style.--color-tag1]="color.color.colorTag"
-                  [style.--color-tag2]="color.color.colorTag2"
-                ></div>
+                <div class="color-option-exmp" [style.--color-tag1]="color.color.colorTag"
+                  [style.--color-tag2]="color.color.colorTag2"></div>
                 {{ color.color.name }}
               </div>
               }
@@ -53,11 +44,8 @@
             @for (_color of (colors$ | async); track $index) {
             <mat-option [value]="_color">
               <div class="color-option">
-                <div
-                  class="color-option-exmp"
-                  [style.--color-tag1]="_color.colorTag"
-                  [style.--color-tag2]="_color.colorTag2"
-                ></div>
+                <div class="color-option-exmp" [style.--color-tag1]="_color.colorTag"
+                  [style.--color-tag2]="_color.colorTag2"></div>
                 {{ _color.name }}
               </div>
             </mat-option>
@@ -70,19 +58,13 @@
       <h4>נתונים נוספים</h4>
       <mat-form-field class="model-page-content-shopping-notes">
         <mat-label>הערה</mat-label>
-        <input matInput [value]="_item.notes" />
+        <input matInput [(ngModel)]="_item.notes" />
       </mat-form-field>
 
       <div class="model-page-content-shopping-add">
         <mat-form-field>
           <mat-label>כמות</mat-label>
-          <input
-            matInput
-            type="number"
-            [(ngModel)]="_item.quantity"
-            (ngModelChange)="updatePrice()"
-            [min]="1"
-          />
+          <input matInput type="number" [(ngModel)]="_item.quantity" (ngModelChange)="updatePrice()" [min]="1" />
         </mat-form-field>
         <button matButton="filled" (click)="addToCart(_item)">
           <mat-icon>add_shopping_cart</mat-icon>

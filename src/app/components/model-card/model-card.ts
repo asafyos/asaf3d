@@ -21,14 +21,14 @@ import { Model } from '../../core/local-db/types';
 export class ModelCard {
 
   @Input()
-  model: Model | null = null;
+  model!: Model;
 
   constructor(private _router: Router) {
 
   }
 
   openModel(): void {
-    this._router.navigate(['/model', this.model?.id])
+    this._router.navigate(['/model', this.model.id])
   }
 
 }

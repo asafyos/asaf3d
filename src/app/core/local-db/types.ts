@@ -57,11 +57,11 @@ export type Status = {
 }
 
 export type Order = {
-    id: number,
-    user: User,
-    status: Status,
+    id?: number,
+    user?: User,
+    status?: Status,
     name?: string,
-    phone?: number,
+    phone?: string,
     finalPrice: number,
     items: OrderItem[],
 }
