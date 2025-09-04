@@ -1,5 +1,5 @@
 @media (min-width: 600px) {
-    .small-screen {
+    .small-screen.cart {
         display: none;
     }
 
@@ -28,14 +28,16 @@
         }
 
         &-summary {
+            height: 100%;
             width: 40%;
+            overflow-y: auto;
 
         }
     }
 }
 
 @media (max-width: 600px) {
-    .big-screen {
+    .big-screen.cart {
         display: none;
     }
 
