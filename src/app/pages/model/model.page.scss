@@ -1,14 +1,14 @@
 @import url('../../../style/mixin.scss');
 
 .model-page {
-    width: 80%;
-    margin-inline: 10%;
-    margin-block: 2rem;
+    // width: 80%;
+    // margin-inline: 10%;
+    // margin-block: 2rem;
 
-    @media (max-width: 600px) {
-        width: 100%;
-        margin-inline: 0;
-    }
+    // @media (max-width: 600px) {
+    //     width: 100%;
+    //     margin-inline: 0;
+    // }
 
     &-title {}
 
@@ -40,6 +40,7 @@
 
             >img {
                 @media (max-width: 600px) {
+                    width: inherit;
                     width: -webkit-fill-available;
                 }
 

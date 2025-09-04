@@ -1,0 +1,10 @@
+<div class="cart">
+  <h1 class="cart-header">עגלה</h1>
+  @if (items$ | async; as items) {
+  <div class="cart-items">
+    @for (item of items; track $index) {
+    <cart-order-item [item]="item"></cart-order-item>
+    }
+  </div>
+  } @else { }
+</div>

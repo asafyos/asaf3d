@@ -6,6 +6,7 @@
     border-bottom: 1px solid #0000005d;
 
     &-logo {
+        width: inherit;
         width: -webkit-fill-available;
 
         display: flex;

@@ -25,30 +25,28 @@
       </div>
     </div>
     <div class="model-page-content-shopping">
+      @if( orderItem$ | async; as _item){
       <h3>הזמנת פריט</h3>
       <h4>צבעים למודל</h4>
       <div class="model-page-content-shopping-model-parts">
-        @for (part of _model.parts; track $index) {
-        <!-- <h4 class="model-page-content-shopping-model-parts-part-name">
-          {{ part.name }}
-        </h4> -->
+        @for (color of _item.colors; track $index) {
         <mat-form-field>
-          <mat-label>{{ part.name }}</mat-label>
+          <mat-label>{{ color.part.name }}</mat-label>
           <mat-select
             [required]="true"
             class="model-page-content-shopping-model-parts-part-color"
-            [(ngModel)]="part.selectedColor"
+            [(ngModel)]="color.color"
             (ngModelChange)="updatePrice()"
           >
             <mat-select-trigger>
-              @if (part.selectedColor) {
+              @if (color.color) {
               <div class="color-option">
                 <div
                   class="color-option-exmp"
-                  [style.--color-tag1]="part.selectedColor.colorTag"
-                  [style.--color-tag2]="part.selectedColor.colorTag2"
+                  [style.--color-tag1]="color.color.colorTag"
+                  [style.--color-tag2]="color.color.colorTag2"
                 ></div>
-                {{ part.selectedColor.name }}
+                {{ color.color.name }}
               </div>
               }
             </mat-select-trigger>
@@ -72,7 +70,7 @@
       <h4>נתונים נוספים</h4>
       <mat-form-field class="model-page-content-shopping-notes">
         <mat-label>הערה</mat-label>
-        <input matInput [value]="_model.note" />
+        <input matInput [value]="_item.notes" />
       </mat-form-field>
 
       <div class="model-page-content-shopping-add">
@@ -81,16 +79,17 @@
           <input
             matInput
             type="number"
-            [(ngModel)]="_model.quantity"
+            [(ngModel)]="_item.quantity"
             (ngModelChange)="updatePrice()"
             [min]="1"
           />
         </mat-form-field>
-        <button matButton="filled">
+        <button matButton="filled" (click)="addToCart(_item)">
           <mat-icon>add_shopping_cart</mat-icon>
-          הוספה לעגלה ({{ price$ | async }}₪)
+          הוספה לעגלה ({{ price() }}₪)
         </button>
       </div>
+      }
     </div>
   </div>
 </div>

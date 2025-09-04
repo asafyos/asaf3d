@@ -5,13 +5,22 @@
     overflow: hidden;
 
     &-sidenav {
+        height: inherit;
         height: -webkit-fill-available;
     }
 
     &-content {
-        margin-inline: 1vw;
 
-        @media (max-width: 600px) {
+        // width: 80%;
+        margin-inline: 10%;
+        height: inherit;
+        height: -webkit-fill-available;
+        margin-block: 1rem;
+
+        // margin-inline: 1vw;
+
+        @media (max-width: 1200px) {
+            // width: 100%;
             margin-inline: 5vw;
         }
     }

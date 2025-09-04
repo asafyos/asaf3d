@@ -18,16 +18,13 @@ export type Model = {
     depth?: number,
     ams: boolean,
     categories: Category[],
-    parts: ModelPart[]
-    note?: string,
-    quantity?: number,
+    parts: ModelPart[],
 }
 
 export type ModelPart = {
     id: number,
     name: string,
     weight: number, // grams
-    selectedColor?: Color
 }
 
 export type Color = {
@@ -70,7 +67,7 @@ export type Order = {
 }
 
 export type OrderItem = {
-    item: number,
+    item?: number,
     model: Model,
     quantity: number,
     notes: string,
@@ -81,8 +78,8 @@ export type OrderItem = {
 }
 
 export type OrderItemColor = {
-    id: number,
+    id?: number,
     part: ModelPart,
-    color: Color,
+    color?: Color,
     notes?: string,
 }
